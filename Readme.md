@@ -4,7 +4,7 @@ There is a hidden folder called `.git` which tells you that our project is a git
 
 If we wanted to create a git repo in a new project we' create folder and the initialize that repo using `git init`
 
-```
+```sh
 mkdir /workspaces/tmp/new-project
 cd /workspaces/tmp/new-project
 git init
@@ -33,6 +33,48 @@ git clone https://github.com/GHCiozetdii/Github-Examples.git
 cd Github-Examples
 ```
 
+> You'll need to generate a Personal Access Tokens (PAT- https://github.com/settings/tokens)
+
+You will use the PAT as your password when you login
+
+- Give it access to Contents for Commits
+
+### SSH
+
+```sh
+git clone git@github.com:GHCiozetdii/Github-Examples.git
+cd Github-Examples
+```
+
+We will need to create our own SSH rsa key pair
+
+```sh
+sshe-keygen -t rsa
+```
+
+For WSL users and if you create a non default key you might need to add it
+
+```sh
+eval 'ssh-agent'
+ssh-add /home/hakan/.ssh/alt-github_id_rsa
+```
+
+We can test our connection here.
+
+```sh
+ssh -T git@github.com
+```
+
+### Github CLI
+
+Install the CLI
+
+eg. Linux (ubuntu)
+```sh
+sudo apt update
+sudo apt install gh -y
+```
+
 ## Commits 
 
 When we want to commit code we can write git commit which will
@@ -54,6 +96,23 @@ git commit -m "add another exclamation"
 
 ## Branches
 
+List of branches
+
+```
+git branch
+```
+Create a new branch
+
+```
+git branch branch-name
+```
+
+Checkout the branch 
+
+```
+git checkout dev
+```
+
 ## Remotes
 
 ## Stashing
@@ -65,7 +124,7 @@ git commit -m "add another exclamation"
 When we want to stage changes that will be included in the commit 
 We can use the . to add all possible files.
 
-```
+```sh
 git add Readme.md
 git add.
 ```
@@ -86,7 +145,7 @@ git reset
 
 Git status shows you what files will or will not be commited.
 
-```
+```sh
 git status
 ```
 
